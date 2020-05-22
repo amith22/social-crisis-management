@@ -1,0 +1,80 @@
+{% load  static%}
+<!DOCTYPE HTML>
+<html>
+
+<head>
+<title></title>
+<link rel="stylesheet" type="text/css" href="{% static 'style/style.css'%}" title="style" />
+</head>
+
+<body>
+	<div id="main">
+		<div id="header">
+			<div id="logo">
+				<div id="logo_text">
+					<!-- class="logo_colour", allows you to change the colour of the text -->
+					<h3>
+						<a href="#"><font color="white">Community Oriented Policing</font></a>
+					</h3>
+					<br/><br/>
+				</div>
+			</div>
+			<div id="menubar">
+				<ul id="menu">
+
+                    <li><a href="/viewpolices">View Polices</a></li>
+					<li><a href="/addpolice">Add Police</a></li>
+					<li><a href="/logout">logout</a></li>
+
+				</ul>
+			</div>
+		</div>
+		<div id="content_header"></div>
+		<div id="site_content">
+			<div id="content">
+
+				<h1>Welcome to  <strong>{{request.session.username}}</strong>{{form.non_field_errors}}</h1>
+
+                <table style="width: 100%; border-spacing: 0;">
+
+                    <tr>
+
+						<td>User Name</td>
+						<td>Name</td>
+                        <td>Mobile</td>
+                        <td>Email</td>
+                        <td>Address</td>
+                        <td>Station</td>
+
+                        {% if request.session.role in "admin" %}
+                            <td>Delete</td>
+                        {% endif %}
+
+                    </tr>
+
+                    {% for police in polices %}
+
+                               <tr>
+
+                                    <td>{{police.username}}</td>
+                                    <td>{{police.name}}</td>
+                                    <td>{{police.mobile}}</td>
+                                    <td>{{police.email}}</td>
+                                    <td>{{police.address}}</td>
+                                    <td>{{police.station}}</td>
+
+                                    {% if request.session.role in "admin" %}
+                                        <td><a href="/deletepolice?policeid={{ police.id }}">Delete</a></td>
+                                    {% endif %}
+
+                                </tr>
+
+                    {% endfor %}
+
+  				</table>
+
+			</div>
+		</div>
+	</div>
+</body>
+</html>

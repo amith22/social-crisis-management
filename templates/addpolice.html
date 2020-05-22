@@ -22,8 +22,8 @@
 			<div id="menubar">
 				<ul id="menu">
 
-                    <li><a href="/viewevents">View Events</a></li>
-					<li><a href="/addevent">Add Event</a></li>
+                    <li><a href="/viewpolices">View Polices</a></li>
+					<li><a href="/addpolice">Add Police</a></li>
 					<li><a href="/logout">logout</a></li>
 
 				</ul>
@@ -35,25 +35,42 @@
 
 				<h1>Status : {{message}}</h1>
 
-				<form name="form" action="/addeventaction/">
+				<form name="form" action="/addpoliceaction/" method="post">
 					{% csrf_token %}
 					<div class="form_settings">
+						<input type="hidden" name="utype" value="student" />
 
                         <p>
-							<span>Event Name :</span><input class="contact" type="text" name="eventname" value="" />
+							<span>Name :</span><input class="contact" type="text" name="name" value="" />
 						</p>
 
 						<p>
-							<span>Sub Category :</span><input class="contact" type="text" name="subcategory" value="" />
+							<span>User Name :</span><input class="contact" type="text" name="username" value="" />
 						</p>
 
 						<p>
-							<span>Keywords :</span><input class="contact" type="text" name="keywords" value="" />
+							<span>Password :</span><input class="contact" type="password" name="password" value="" />
+						</p>
+
+						<p>
+							<span>Mobile :</span><input class="contact" type="text" name="mobile" value="" />
+						</p>
+
+                        <p>
+							<span>Email :</span><input class="contact" type="email" name="email" value="" />
+						</p>
+
+						<p>
+							<span>Address :</span><textarea rows="" cols="" name="address"></textarea>
+						</p>
+
+                        <p>
+							<span>Station :</span><input class="contact" type="text" name="station" value="" />
 						</p>
 
 						<p style="padding-top: 15px">
 							<span>&nbsp;</span><input class="submit" type="submit"
-								name="contact_submitted" value="Add Event" />
+								name="contact_submitted" value="Add Police" />
 						</p>
 
 					</div>
